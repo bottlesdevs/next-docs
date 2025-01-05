@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"63220de64212e86b","x":220,"y":-1300,"width":460,"height":380,"color":"5","type":"group","label":"Wine Prefix"},
+		{"id":"6c1d51187d4b773b","type":"text","text":"## Client\n> Binary\n\nCalls the core library if written in Rust.","x":280,"y":-520,"width":340,"height":160,"color":"2"},
+		{"id":"9d540db2f16f7106","type":"text","text":"## Core library\n> Library\n\nCore library for Bottles","x":280,"y":-800,"width":340,"height":160,"color":"1"},
+		{"id":"2e25cd35976782ee","type":"text","text":"## Server\n> Binary\n\nExecutes the gRPC server","x":-300,"y":-800,"width":340,"height":160,"color":"6"},
+		{"id":"c60a702a1ffbfac9","type":"text","text":"## Client\n> Binary\n\nCalls the server via gRPC.","x":-300,"y":-520,"width":340,"height":160,"color":"4"},
+		{"id":"563f7be933877fe8","x":390,"y":-1015,"width":120,"height":62,"color":"#9def06","type":"text","text":"### FIFO"},
+		{"id":"ea430dd65523a433","type":"text","text":"## WineBridge\n> Binary\n\nRuns commands on Windows.","x":280,"y":-1262,"width":340,"height":133,"color":"3"}
+	],
+	"edges":[
+		{"id":"a966ff3b996f6017","fromNode":"c60a702a1ffbfac9","fromSide":"top","toNode":"2e25cd35976782ee","toSide":"bottom"},
+		{"id":"dc357ea72c6ba1ac","fromNode":"2e25cd35976782ee","fromSide":"bottom","toNode":"c60a702a1ffbfac9","toSide":"top","label":"gRPC call"},
+		{"id":"6a2aec62740ac944","fromNode":"6c1d51187d4b773b","fromSide":"top","toNode":"9d540db2f16f7106","toSide":"bottom","label":"Method call"},
+		{"id":"696f36f46930beb8","fromNode":"2e25cd35976782ee","fromSide":"right","toNode":"9d540db2f16f7106","toSide":"left","label":"Method call"},
+		{"id":"68b938df34dcd9a4","fromNode":"ea430dd65523a433","fromSide":"bottom","toNode":"563f7be933877fe8","toSide":"top","label":"Reads"},
+		{"id":"f91e274437878a32","fromNode":"9d540db2f16f7106","fromSide":"top","toNode":"563f7be933877fe8","toSide":"bottom","label":"Writes"}
+	]
+}
