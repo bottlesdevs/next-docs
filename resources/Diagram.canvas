@@ -1,19 +1,21 @@
 {
 	"nodes":[
-		{"id":"63220de64212e86b","x":220,"y":-1300,"width":460,"height":380,"color":"5","type":"group","label":"Wine Prefix"},
-		{"id":"6c1d51187d4b773b","type":"text","text":"## Client\n> Binary\n\nCalls the core library if written in Rust.","x":280,"y":-520,"width":340,"height":160,"color":"2"},
-		{"id":"9d540db2f16f7106","type":"text","text":"## Core library\n> Library\n\nCore library for Bottles","x":280,"y":-800,"width":340,"height":160,"color":"1"},
-		{"id":"2e25cd35976782ee","type":"text","text":"## Server\n> Binary\n\nExecutes the gRPC server","x":-300,"y":-800,"width":340,"height":160,"color":"6"},
-		{"id":"c60a702a1ffbfac9","type":"text","text":"## Client\n> Binary\n\nCalls the server via gRPC.","x":-300,"y":-520,"width":340,"height":160,"color":"4"},
-		{"id":"563f7be933877fe8","x":390,"y":-1015,"width":120,"height":62,"color":"#9def06","type":"text","text":"### FIFO"},
-		{"id":"ea430dd65523a433","type":"text","text":"## WineBridge\n> Binary\n\nRuns commands on Windows.","x":280,"y":-1262,"width":340,"height":133,"color":"3"}
+		{"id":"63220de64212e86b","type":"group","x":-360,"y":-1580,"width":440,"height":300,"color":"5","label":"Wine Prefix"},
+		{"id":"2e25cd35976782ee","type":"text","text":"## Server\n> Binary\n\nServer delegates business logic to the core library\n\nExecutes the gRPC server","x":-310,"y":-880,"width":340,"height":220,"color":"6"},
+		{"id":"9d540db2f16f7106","type":"text","text":"## Core\n> Library\n\nResponsible for handling the logic of the application, should also handle data persistence and retrieval.","x":-310,"y":-1200,"width":340,"height":230,"color":"1"},
+		{"id":"ea430dd65523a433","type":"text","text":"## WineBridge\n> Binary\n\nResponsible for interacting with the Windows API within the Wine prefix\n\nRuns commands on Windows.","x":-310,"y":-1540,"width":340,"height":220,"color":"3"},
+		{"id":"6c1d51187d4b773b","type":"text","text":"## Rust Client\n> Binary\n\nResponsible for rendering the user interface and handling user interactions\n\nCalls the core library directly or the gRPC server","x":30,"y":-540,"width":360,"height":300,"color":"2"},
+		{"id":"c60a702a1ffbfac9","type":"text","text":"## Client\n> Binary\n\nResponsible for rendering the user interface and handling user interactions\n\nUser interactions trigger gRPC calls to the server","x":-650,"y":-540,"width":340,"height":300,"color":"4"}
 	],
 	"edges":[
-		{"id":"a966ff3b996f6017","fromNode":"c60a702a1ffbfac9","fromSide":"top","toNode":"2e25cd35976782ee","toSide":"bottom"},
-		{"id":"dc357ea72c6ba1ac","fromNode":"2e25cd35976782ee","fromSide":"bottom","toNode":"c60a702a1ffbfac9","toSide":"top","label":"gRPC call"},
-		{"id":"6a2aec62740ac944","fromNode":"6c1d51187d4b773b","fromSide":"top","toNode":"9d540db2f16f7106","toSide":"bottom","label":"Method call"},
-		{"id":"696f36f46930beb8","fromNode":"2e25cd35976782ee","fromSide":"right","toNode":"9d540db2f16f7106","toSide":"left","label":"Method call"},
-		{"id":"68b938df34dcd9a4","fromNode":"ea430dd65523a433","fromSide":"bottom","toNode":"563f7be933877fe8","toSide":"top","label":"Reads"},
-		{"id":"f91e274437878a32","fromNode":"9d540db2f16f7106","fromSide":"top","toNode":"563f7be933877fe8","toSide":"bottom","label":"Writes"}
+		{"id":"6a2aec62740ac944","fromNode":"6c1d51187d4b773b","fromSide":"top","toNode":"9d540db2f16f7106","toSide":"right","label":"Procedure call"},
+		{"id":"696f36f46930beb8","fromNode":"2e25cd35976782ee","fromSide":"top","toNode":"9d540db2f16f7106","toSide":"bottom","label":"Method call"},
+		{"id":"b318a1728c15a568","fromNode":"ea430dd65523a433","fromSide":"bottom","toNode":"9d540db2f16f7106","toSide":"top"},
+		{"id":"55dddc200e8b06aa","fromNode":"9d540db2f16f7106","fromSide":"top","toNode":"ea430dd65523a433","toSide":"bottom","label":"gRPC call"},
+		{"id":"869a7fc2e37c757f","fromNode":"c60a702a1ffbfac9","fromSide":"top","toNode":"2e25cd35976782ee","toSide":"bottom"},
+		{"id":"483119be319d4f25","fromNode":"6c1d51187d4b773b","fromSide":"top","toNode":"2e25cd35976782ee","toSide":"bottom"},
+		{"id":"b9dc06237bae1efd","fromNode":"2e25cd35976782ee","fromSide":"bottom","toNode":"6c1d51187d4b773b","toSide":"top","label":"gRPC call"},
+		{"id":"d3a7dee76da9c81c","fromNode":"2e25cd35976782ee","fromSide":"bottom","toNode":"c60a702a1ffbfac9","toSide":"top","label":"gRPC call"},
+		{"id":"b1e143f9e9a397d3","fromNode":"9d540db2f16f7106","fromSide":"right","toNode":"6c1d51187d4b773b","toSide":"top"}
 	]
 }
